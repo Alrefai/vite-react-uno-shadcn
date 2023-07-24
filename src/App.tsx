@@ -10,7 +10,7 @@ const App = () => {
       `min-h-100vh`,
       `flex-(~ col)`,
       `items-center justify-center`,
-      `bg-#282c34 color-white`,
+      `bg-light dark:bg-black color-dark dark:color-light`,
     ]),
   } satisfies React.HTMLAttributes<HTMLElement>
 
@@ -31,15 +31,19 @@ const App = () => {
   const anchorProps = {
     target: `_blank`,
     rel: `noopener noreferrer`,
-    className: `color-#61dafb`,
+    className: `color-blue-500 dark:color-blue-400`,
   } satisfies React.AnchorHTMLAttributes<HTMLAnchorElement>
 
   return (
     <div className='text-center'>
       <header {...hearderProps}>
-        <div className='logo' />
+        <div className='w-100 flex justify-evenly'>
+          <div className='i-logos-vitejs logo' />
+          <div className='i-logos-react logo' />
+          <div className='i-logos-unocss dark:i-logos-unocss?mask logo' />
+        </div>
         <h1 mt='2em' animate='bounce-alt duration-2s'>
-          Hello Vite + React!
+          Hello Vite + React + UnoCSS
         </h1>
         <p>
           <button {...buttonProps}>count is: {count}</button>
@@ -54,6 +58,8 @@ const App = () => {
           <a {...anchorProps} href='https://vitejs.dev/guide/features.html'>
             Vite Docs
           </a>
+          {` | `}
+          <a {...anchorProps} href='https://unocss.dev/guide'>UnoCSS Docs</a>
         </p>
       </header>
     </div>
