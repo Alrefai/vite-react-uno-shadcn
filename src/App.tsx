@@ -12,7 +12,7 @@ const App = () => {
 
   const buttonProps = {
     type: `button`,
-    className: `font-(mono light) m-2`,
+    className: `font-(mono light) m-2 active:scale-99`,
     onClick: () => setCount(count => count + 1),
   } satisfies ButtonProps
 
