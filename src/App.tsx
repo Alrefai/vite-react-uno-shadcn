@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button.tsx'
+import { Separator } from '@/components/ui/separator.tsx'
+
 import type { ButtonProps } from '@/components/ui/button.tsx'
 
 const App = () => {
@@ -43,17 +45,17 @@ const App = () => {
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
-        <p>
+        <p className='my-4 h-5 flex items-center space-x-0.75'>
           <Button asChild variant='link' text='muted-foreground'>
             <a {...anchorProps} href='https://vitejs.dev/guide/features.html'>
               Vite Docs
             </a>
           </Button>
-          {`|`}
+          <Separator orientation='vertical' />
           <Button asChild variant='link' text='muted-foreground'>
             <a {...anchorProps} href='https://reactjs.org'>Learn React</a>
           </Button>
-          {`|`}
+          <Separator orientation='vertical' />
           <Button asChild variant='link' text='muted-foreground'>
             <a {...anchorProps} href='https://unocss.dev/guide'>UnoCSS Docs</a>
           </Button>
