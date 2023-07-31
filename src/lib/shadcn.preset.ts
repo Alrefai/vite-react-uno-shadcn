@@ -42,6 +42,8 @@ export const presetShadcn = (): Preset<Theme> => ({
   name: `unocss-preset-shadcn`,
   preflights: [{
     getCSS: () => /* CSS */ `
+      :root { --radius: 0.5rem; }
+
       @keyframes anime-down {
         from {
           height: 0
