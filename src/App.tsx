@@ -33,7 +33,9 @@ const App = () => {
           Hello Vite + React + UnoCSS
         </h1>
         <p py='4'>
-          <Button {...buttonProps}>count is: {count}</Button>
+          <Button {...buttonProps} focus-visible='dark:ring-primary/30'>
+            count is: {count}
+          </Button>
           <Button {...buttonProps} variant='secondary'>
             count is: {count}
           </Button>
