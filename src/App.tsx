@@ -1,65 +1,64 @@
 import { useState } from 'react'
 
-import { cn } from './lib/utils.ts'
+import { Button } from '@/components/ui/button.tsx'
+import { Separator } from '@/components/ui/separator.tsx'
+
+import type { ButtonProps } from '@/components/ui/button.tsx'
 
 const App = () => {
   const [count, setCount] = useState(0)
 
   const hearderProps = {
-    className: cn([
-      `min-h-100vh`,
-      `flex-(~ col)`,
-      `items-center justify-center`,
-      `bg-light dark:bg-black color-dark dark:color-light`,
-    ]),
+    className: `min-h-100vh flex-(~ col) items-center justify-center`,
   } satisfies React.HTMLAttributes<HTMLElement>
 
   const buttonProps = {
     type: `button`,
-    className: cn([
-      `p-(y2 x-2)`,
-      `bg-blue-400 dark:bg-blue-500`,
-      `hover:(bg-blue-500 dark:bg-blue-600)`,
-      `text-(sm dark)`,
-      `font-(mono light)`,
-      `border-(2 blue-200)`,
-      `rounded`,
-    ]),
+    className: `font-(mono light) m-2 active:scale-99`,
     onClick: () => setCount(count => count + 1),
-  } satisfies React.ButtonHTMLAttributes<HTMLButtonElement>
+  } satisfies ButtonProps
 
   const anchorProps = {
     target: `_blank`,
     rel: `noopener noreferrer`,
-    className: `color-blue-500 dark:color-blue-400`,
   } satisfies React.AnchorHTMLAttributes<HTMLAnchorElement>
 
   return (
     <div className='text-center'>
       <header {...hearderProps}>
-        <div className='w-100 flex justify-evenly'>
+        <div className='w-100 py-8 flex justify-evenly'>
           <div className='i-logos-vitejs logo' />
           <div className='i-logos-react logo' />
-          <div className='i-logos-unocss dark:i-logos-unocss?mask logo' />
+          <div className='i-logos-unocss?mask logo bg-foreground/80' />
         </div>
-        <h1 mt='2em' animate='bounce-alt duration-2s'>
+        <h1 pt='4' animate='bounce duration-2s'>
           Hello Vite + React + UnoCSS
         </h1>
-        <p>
-          <button {...buttonProps}>count is: {count}</button>
-          <button {...buttonProps} ml='1em'>count is: {count}</button>
+        <p py='4'>
+          <Button {...buttonProps} focus-visible='dark:ring-primary/30'>
+            count is: {count}
+          </Button>
+          <Button {...buttonProps} variant='secondary'>
+            count is: {count}
+          </Button>
         </p>
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
-        <p>
-          <a {...anchorProps} href='https://reactjs.org'>Learn React</a>
-          {` | `}
-          <a {...anchorProps} href='https://vitejs.dev/guide/features.html'>
-            Vite Docs
-          </a>
-          {` | `}
-          <a {...anchorProps} href='https://unocss.dev/guide'>UnoCSS Docs</a>
+        <p className='my-4 h-5 flex items-center space-x-0.75'>
+          <Button asChild variant='link' text='muted-foreground'>
+            <a {...anchorProps} href='https://vitejs.dev/guide/features.html'>
+              Vite Docs
+            </a>
+          </Button>
+          <Separator orientation='vertical' />
+          <Button asChild variant='link' text='muted-foreground'>
+            <a {...anchorProps} href='https://reactjs.org'>Learn React</a>
+          </Button>
+          <Separator orientation='vertical' />
+          <Button asChild variant='link' text='muted-foreground'>
+            <a {...anchorProps} href='https://unocss.dev/guide'>UnoCSS Docs</a>
+          </Button>
         </p>
       </header>
     </div>
