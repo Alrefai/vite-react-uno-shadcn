@@ -2,6 +2,7 @@
  * UnoCSS preset for Shadcn UI Components.
  * This preset was forked from the `fisand/unocss-preset-shadcn` repository.
  *
+ * ---
  * References:
  * - https://github.com/fisand/unocss-preset-shadcn/blob/main/preset.shadcn.ts
  */
@@ -10,6 +11,10 @@ import { h, variantGetParameter } from '@unocss/preset-mini/utils'
 
 import type { Preset, VariantContext, VariantObject } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
+
+import { styles } from './base.styles.ts'
+import { colors } from './shadcn.colors.ts'
+import { theme } from './shadcn.theme.ts'
 
 const variantGroupDataAttribute = {
   name: `group-data`,
@@ -20,12 +25,12 @@ const variantGroupDataAttribute = {
       ctx.generator.config.separators,
     )
 
-    if (variant) {
-      const [match, rest] = variant
-      const dataAttribute = h.bracket(match) ?? ctx.theme.data?.[match] ?? ``
-      if (dataAttribute)
-        return { matcher: `group-[[data-${dataAttribute}]]:${rest}` }
-    }
+    if (!variant) return undefined
+    const [match, rest] = variant
+    const dataAttribute = h.bracket(match) ?? ctx.theme.data?.[match]
+    return dataAttribute
+      ? { matcher: `group-[[data-${dataAttribute}]]:${rest}` }
+      : undefined
   },
 } satisfies VariantObject
 
@@ -40,7 +45,8 @@ const handleMatchRem = (v: string, defaultVal = `full`) =>
 
 export const presetShadcn = (): Preset<Theme> => ({
   name: `unocss-preset-shadcn`,
-  preflights: [{
+  theme,
+  preflights: [{ getCSS: () => colors }, { getCSS: () => styles }, {
     getCSS: () => /* CSS */ `
       :root { --radius: 0.5rem; }
 

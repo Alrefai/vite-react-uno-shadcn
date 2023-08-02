@@ -81,12 +81,4 @@ export const colors: string = /* CSS */ `
       --ring: var(--secondary);
     }
   }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
 `
