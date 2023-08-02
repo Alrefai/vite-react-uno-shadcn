@@ -3,7 +3,6 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
-  transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
 
@@ -24,7 +23,7 @@ export default defineConfig({
     }),
     presetShadcn(),
   ],
-  transformers: [transformerVariantGroup(), transformerDirectives()],
+  transformers: [transformerVariantGroup()],
   theme,
   preflights: [{ getCSS: () => colors }, {
     getCSS: () => /* CSS */ `
