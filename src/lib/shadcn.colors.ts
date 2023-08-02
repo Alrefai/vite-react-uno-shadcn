@@ -81,13 +81,4 @@ export const colors: string = /* CSS */ `
       --ring: var(--secondary);
     }
   }
-
-  * {
-    border-color: hsla(var(--border), 1);
-  }
-
-  body {
-    background-color: hsla(var(--background), 1);
-    color: hsla(var(--foreground), 1);
-  }
 `
