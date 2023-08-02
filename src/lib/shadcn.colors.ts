@@ -83,10 +83,11 @@ export const colors: string = /* CSS */ `
   }
 
   * {
-    @apply border-border;
+    border-color: hsla(var(--border), 1);
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsla(var(--background), 1);
+    color: hsla(var(--foreground), 1);
   }
 `
